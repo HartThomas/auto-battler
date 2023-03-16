@@ -57,7 +57,17 @@ class _BattlePageState extends State<BattlePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+        body: Container(
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+            image: DecorationImage(image: NetworkImage('./data/Versus.svg'))
+          ),
+      const FloatingActionButton: FloatingActionButton(
+        onPressed: _collision,
+        tooltip: 'Collide',
+        child: const Icon(Icons.add),
+      ),
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
@@ -68,11 +78,6 @@ class _BattlePageState extends State<BattlePage> {
               mainAxisAlignment: MainAxisAlignment.end, children: _getEnemies())
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _collision,
-        tooltip: 'Collide',
-        child: const Icon(Icons.add),
-      ),
-    );
+    ));
   }
 }
