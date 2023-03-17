@@ -1,7 +1,5 @@
 import 'package:auto_battler/battle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +12,62 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      initialRoute: "/",
+      routes: {
+        "/battlepage": (context) => const BattlePage(title: "Battle Page")
+      },
+      title: 'Auto-battler',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const BattlePage(title: 'Battle Page'),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
+  final _pile = List.filled(
+      5,
+      Container(
+        width: 80,
+        height: 80,
+        decoration: BoxDecoration(
+          border: Border.all(width: 5, color: Colors.yellow),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        ),
+      ));
+
+  _info(context) {
+    List<Widget> listings = List.filled(
+        3,
+        Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            border: Border.all(width: 5, color: Colors.red),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+          ),
+        ),
+        growable: true);
+    listings.add(ElevatedButton(
+      onPressed: () {
+        Navigator.pushNamed(context, "/battlepage");
+      },
+      child: Text('Toss'),
+    ));
+    return listings;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Row(
+          children: [Column(children: _pile), Column(children: _info(context))],
+        )
+      ]),
     );
   }
 }
@@ -46,6 +95,7 @@ class _BattlePageState extends State<BattlePage> {
       listings.add(Icon(
         battle.friends[i].icon,
         color: Colors.white,
+        size: 120,
       ));
     }
     return listings;
@@ -57,14 +107,11 @@ class _BattlePageState extends State<BattlePage> {
       listings.add(Icon(
         battle.enemies[i].icon,
         color: Colors.white,
+        size: 120,
       ));
     }
     return listings;
   }
-
-  var backgroundImage = SvgPicture.asset(
-    'assets/Versus.dart',
-  );
 
   @override
   Widget build(BuildContext context) {
