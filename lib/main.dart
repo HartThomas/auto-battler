@@ -1,5 +1,7 @@
 import 'package:auto_battler/battle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,8 +42,11 @@ class _BattlePageState extends State<BattlePage> {
 
   _getFriends() {
     List<Widget> listings = List.empty(growable: true);
-    for (var i = 0; i < battle.friends.length; i++) {
-      listings.add(Icon(battle.friends[i].icon));
+    for (var i = battle.friends.length - 1; i >= 0; i--) {
+      listings.add(Icon(
+        battle.friends[i].icon,
+        color: Colors.white,
+      ));
     }
     return listings;
   }
@@ -49,35 +54,50 @@ class _BattlePageState extends State<BattlePage> {
   _getEnemies() {
     List<Widget> listings = List.empty(growable: true);
     for (var i = 0; i < battle.enemies.length; i++) {
-      listings.add(Icon(battle.enemies[i].icon));
+      listings.add(Icon(
+        battle.enemies[i].icon,
+        color: Colors.white,
+      ));
     }
     return listings;
   }
 
+  var backgroundImage = SvgPicture.asset(
+    'assets/Versus.dart',
+  );
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return MaterialApp(
+        title: "Battle Page",
+        home: Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-            image: DecorationImage(image: NetworkImage('./data/Versus.svg'))
+              image: DecorationImage(
+                  image: AssetImage(
+                    'assets/versus.png',
+                  ),
+                  fit: BoxFit.cover)),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            floatingActionButton: FloatingActionButton(
+              onPressed: _collision,
+              tooltip: 'Collide',
+              child: const Icon(Icons.add),
+            ),
+            body: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: _getFriends(),
+                ),
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: _getEnemies())
+              ],
+            ),
           ),
-      const FloatingActionButton: FloatingActionButton(
-        onPressed: _collision,
-        tooltip: 'Collide',
-        child: const Icon(Icons.add),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: _getFriends(),
-          ),
-          Column(
-              mainAxisAlignment: MainAxisAlignment.end, children: _getEnemies())
-        ],
-      ),
-    ));
+        ));
   }
 }
