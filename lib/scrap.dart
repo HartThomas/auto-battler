@@ -9,4 +9,9 @@ class Scrap {
   getScrapName() {
     return scrapName;
   }
+
+  collide() {
+    var no = {collide: Function};
+    print(no);
+  }
 }

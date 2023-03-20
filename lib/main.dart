@@ -30,42 +30,75 @@ class HomePage extends StatelessWidget {
 
   final _pile = List.filled(
       5,
-      Container(
-        width: 80,
-        height: 80,
-        decoration: BoxDecoration(
-          border: Border.all(width: 5, color: Colors.yellow),
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-        ),
-      ));
+      Padding(
+          padding: const EdgeInsets.all(5),
+          child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              border: Border.all(width: 5, color: Colors.yellow),
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+            ),
+          )));
 
   _info(context) {
     List<Widget> listings = List.filled(
         3,
-        Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-            border: Border.all(width: 5, color: Colors.red),
-            borderRadius: const BorderRadius.all(Radius.circular(8)),
-          ),
-        ),
+        Padding(
+            padding: const EdgeInsets.all(5),
+            child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.red),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              ),
+            )),
         growable: true);
     listings.add(ElevatedButton(
       onPressed: () {
         Navigator.pushNamed(context, "/battlepage");
       },
-      child: Text('Toss'),
+      child: const Text('Toss'),
     ));
     return listings;
   }
+
+  final _shop = List.filled(
+    8,
+    Padding(
+        padding: const EdgeInsets.all(10),
+        child: Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+              border: Border.all(width: 5, color: Colors.black45),
+              borderRadius: const BorderRadius.all(Radius.circular(8))),
+        )),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
-        Row(
-          children: [Column(children: _pile), Column(children: _info(context))],
+        Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(
+                      left: 75,
+                      right: 80,
+                    ),
+                    child: Column(children: _pile)),
+                Padding(
+                    padding: const EdgeInsets.only(right: 50),
+                    child: Column(children: _info(context)))
+              ],
+            )),
+        Wrap(
+          children: _shop,
         )
       ]),
     );
