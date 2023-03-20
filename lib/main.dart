@@ -1,4 +1,5 @@
 import 'package:auto_battler/battle.dart';
+import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,9 +29,10 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final _pile = List.filled(
-      5,
-      Padding(
+  _pile() {
+    List<Widget> listings = List.empty(growable: true);
+    for (var i = 0; i < friends.length; i++) {
+      listings.add(Padding(
           padding: const EdgeInsets.all(5),
           child: Container(
             width: 80,
@@ -39,7 +41,13 @@ class HomePage extends StatelessWidget {
               border: Border.all(width: 5, color: Colors.yellow),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
             ),
+            child: Icon(
+              friends[i].icon,
+            ),
           )));
+    }
+    return listings;
+  }
 
   _info(context) {
     List<Widget> listings = List.filled(
@@ -91,7 +99,7 @@ class HomePage extends StatelessWidget {
                       left: 75,
                       right: 80,
                     ),
-                    child: Column(children: _pile)),
+                    child: Column(children: _pile())),
                 Padding(
                     padding: const EdgeInsets.only(right: 50),
                     child: Column(children: _info(context)))
@@ -126,7 +134,7 @@ class _BattlePageState extends State<BattlePage> {
     List<Widget> listings = List.empty(growable: true);
     for (var i = battle.friends.length - 1; i >= 0; i--) {
       listings.add(Icon(
-        battle.friends[i].icon,
+        friends[i].icon,
         color: Colors.white,
         size: 120,
       ));
@@ -138,7 +146,7 @@ class _BattlePageState extends State<BattlePage> {
     List<Widget> listings = List.empty(growable: true);
     for (var i = 0; i < battle.enemies.length; i++) {
       listings.add(Icon(
-        battle.enemies[i].icon,
+        enemies[i].icon,
         color: Colors.white,
         size: 120,
       ));
