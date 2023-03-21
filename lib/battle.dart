@@ -6,22 +6,7 @@ class Battle {
   var friends;
   var enemies;
 
-  Battle() {
-    friends = [
-      LooRoll(),
-      Scrap("junk", Icons.tune),
-      Scrap("toilet seat", Icons.tv),
-      Scrap("fork", Icons.fork_left),
-      Scrap("trampoline", Icons.wifi)
-    ];
-    enemies = [
-      LooRoll(),
-      Scrap("junk", Icons.tune),
-      Scrap("toilet seat", Icons.tv),
-      Scrap("fork", Icons.fork_left),
-      Scrap("trampoline", Icons.wifi)
-    ];
-  }
+  Battle();
 
   void collision() {
     if (friends.length != 0 && enemies.length != 0) {
@@ -29,6 +14,7 @@ class Battle {
           enemies[0].scrapName == "Loo roll") {
         friends.removeAt(0);
         enemies.removeAt(0);
+        print("LSKDHJFLSKDHJF");
       } else {
         friends[0].collide();
         enemies[0].collide();

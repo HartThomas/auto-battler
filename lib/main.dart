@@ -9,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -72,20 +71,28 @@ class HomePage extends StatelessWidget {
     return listings;
   }
 
-  final _shop = List.filled(
-    8,
-    Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-              border: Border.all(width: 5, color: Colors.black45),
-              borderRadius: const BorderRadius.all(Radius.circular(8))),
-        )),
-  );
+  _shop() {
+    List<Widget> listings = List.empty(growable: true);
+    for (var i = 0; i < shop.length; i++) {
+      listings.add(
+        Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                  border: Border.all(width: 5, color: Colors.black45),
+                  borderRadius: const BorderRadius.all(Radius.circular(8))),
+              child: Icon(shop[i].icon),
+            )),
+      );
+    }
+    return listings;
+  }
 
-  search() {}
+  search() {
+    // write a function to refresh shop variable
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +115,10 @@ class HomePage extends StatelessWidget {
               ],
             )),
         Wrap(
-          children: _shop,
+          children: _shop(),
         ),
-        ElevatedButton(onPressed: search(), child: Text("Search the scrapyard"))
+        ElevatedButton(
+            onPressed: search(), child: const Text("Search the scrapyard"))
       ]),
     );
   }
