@@ -3,9 +3,9 @@ import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
 class Fork extends Scrap {
-  Fork() : super("Fork", Icons.fork_left);
+  Fork([String? home]) : super("Fork", Icons.fork_left, home);
   @override
-  collide() {
+  collide([String? home]) {
     if (home == "friend") {
       enemies.removeAt(0);
       enemies.removeAt(0);

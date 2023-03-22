@@ -1,4 +1,10 @@
+import 'dart:math';
+
 import 'package:auto_battler/battle_page.dart';
+import 'package:auto_battler/fork.dart';
+import 'package:auto_battler/looroll.dart';
+import 'package:auto_battler/toilet_seat.dart';
+import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
@@ -20,13 +26,38 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomePage(),
+      home: const HomePage(title: "Homepage"),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void _search() {
+    setState(() {
+      for (var i = 0; i < shop.length; i++) {
+        final randomNumber = Random().nextInt(4);
+        if (randomNumber == 0) {
+          shop[i] = Fork();
+        } else if (randomNumber == 1) {
+          shop[i] = ToiletSeat();
+        } else if (randomNumber == 2) {
+          shop[i] = Trampoline();
+        } else if (randomNumber == 3) {
+          shop[i] = LooRoll();
+        }
+      }
+    });
+    // write a function to refresh shop variable
+  }
 
   _pile() {
     List<Widget> listings = List.empty(growable: true);
@@ -76,10 +107,10 @@ class HomePage extends StatelessWidget {
     for (var i = 0; i < shop.length; i++) {
       listings.add(
         Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             child: Container(
-              width: 80,
-              height: 80,
+              width: 75,
+              height: 75,
               decoration: BoxDecoration(
                   border: Border.all(width: 5, color: Colors.black45),
                   borderRadius: const BorderRadius.all(Radius.circular(8))),
@@ -88,10 +119,6 @@ class HomePage extends StatelessWidget {
       );
     }
     return listings;
-  }
-
-  search() {
-    // write a function to refresh shop variable
   }
 
   @override
@@ -106,7 +133,6 @@ class HomePage extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.only(
                       left: 75,
-                      right: 80,
                     ),
                     child: Column(children: _pile())),
                 Padding(
@@ -118,7 +144,7 @@ class HomePage extends StatelessWidget {
           children: _shop(),
         ),
         ElevatedButton(
-            onPressed: search(), child: const Text("Search the scrapyard"))
+            onPressed: _search, child: const Text("Search the scrapyard"))
       ]),
     );
   }

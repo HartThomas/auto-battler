@@ -11,7 +11,7 @@ class Scrap {
     return scrapName;
   }
 
-  collide() {
+  collide([String? home]) {
     var no = {collide: Function};
     print(no);
   }

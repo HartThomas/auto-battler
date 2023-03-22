@@ -2,5 +2,5 @@ import 'package:auto_battler/scrap.dart';
 import 'package:flutter/material.dart';
 
 class LooRoll extends Scrap {
-  LooRoll() : super("Loo roll", Icons.soap);
+  LooRoll([String? home]) : super("Loo roll", Icons.soap, home);
 }
