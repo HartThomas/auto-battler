@@ -114,7 +114,11 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   border: Border.all(width: 5, color: Colors.black45),
                   borderRadius: const BorderRadius.all(Radius.circular(8))),
-              child: Icon(shop[i].icon),
+              child: Tooltip(
+                verticalOffset: -75,
+                message: shop[i].tooltipMessage,
+                child: Icon(shop[i].icon),
+              ),
             )),
       );
     }

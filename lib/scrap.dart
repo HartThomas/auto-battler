@@ -4,8 +4,9 @@ class Scrap {
   String scrapName;
   IconData icon;
   String? home;
+  String? tooltipMessage;
 
-  Scrap(this.scrapName, this.icon, [this.home]);
+  Scrap(this.scrapName, this.icon, [this.home, this.tooltipMessage]);
 
   getScrapName() {
     return scrapName;

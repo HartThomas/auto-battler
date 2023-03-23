@@ -5,8 +5,8 @@ final friends =
     List.filled(5, Scrap("empty", Icons.launch, "friend"), growable: false);
 final enemies =
     List.filled(5, Scrap("empty", Icons.launch, "enemy"), growable: false);
-final shop =
-    List.filled(8, Scrap("empty", Icons.wifi_sharp, "shop"), growable: false);
+final shop = List.filled(8, Scrap("empty", Icons.wifi_sharp, "shop", "empty"),
+    growable: false);
 
 
   //  friends = [

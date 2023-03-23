@@ -3,7 +3,10 @@ import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
 class Trampoline extends Scrap {
-  Trampoline([String? home]) : super("Trampoline", Icons.tune, home);
+  static const tooltip =
+      "The Trampoline bounces the opposing scrap back at the opponent";
+
+  Trampoline([String? home]) : super("Trampoline", Icons.tune, home, tooltip);
   // @override
   // collide() {
   //   if (home == "friend") {

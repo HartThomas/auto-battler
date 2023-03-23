@@ -3,7 +3,9 @@ import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
 class ToiletSeat extends Scrap {
-  ToiletSeat([String? home]) : super("Toilet seat", Icons.tv, home);
+  static const tooltip = "The Toilet Seat destroys the next 3 opposing scrap";
+
+  ToiletSeat([String? home]) : super("Toilet seat", Icons.tv, home, tooltip);
   @override
   collide([String? home]) {
     if (home == "friend") {
