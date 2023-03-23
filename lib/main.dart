@@ -47,17 +47,32 @@ class _HomePageState extends State<HomePage> {
       for (var i = 0; i < shop.length; i++) {
         final randomNumber = Random().nextInt(4);
         if (randomNumber == 0) {
-          shop[i] = Fork();
+          shop[i] = Fork("friends");
         } else if (randomNumber == 1) {
-          shop[i] = ToiletSeat();
+          shop[i] = ToiletSeat("friends");
         } else if (randomNumber == 2) {
-          shop[i] = Trampoline();
+          shop[i] = Trampoline("friends");
         } else if (randomNumber == 3) {
-          shop[i] = LooRoll();
+          shop[i] = LooRoll("friends");
         }
       }
     });
     // write a function to refresh shop variable
+  }
+
+  _createOpponent() {
+    for (var i = 0; i < enemies.length; i++) {
+      final randomNumber = Random().nextInt(4);
+      if (randomNumber == 0) {
+        enemies[i] = Fork("enemies");
+      } else if (randomNumber == 1) {
+        enemies[i] = ToiletSeat("enemies");
+      } else if (randomNumber == 2) {
+        enemies[i] = Trampoline("enemies");
+      } else if (randomNumber == 3) {
+        enemies[i] = LooRoll("enemies");
+      }
+    }
   }
 
   _pile() {
@@ -101,6 +116,7 @@ class _HomePageState extends State<HomePage> {
         growable: true);
     listings.add(ElevatedButton(
       onPressed: () {
+        _createOpponent();
         Navigator.pushNamed(context, "/battlepage");
       },
       child: const Text('Toss'),
