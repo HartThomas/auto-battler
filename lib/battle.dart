@@ -22,7 +22,6 @@ class Battle {
           enemies[0].scrapName == "Loo roll") {
         friends.removeAt(0);
         enemies.removeAt(0);
-        print("LSKDHJFLSKDHJF");
       } else if (friends[0].scrapName == "Trampoline" &&
           enemies[0].scrapName == "Trampoline") {
         enemies.removeAt(0);

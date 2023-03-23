@@ -14,6 +14,6 @@ class Scrap {
 
   collide([String? home]) {
     var no = {collide: Function};
-    print(no);
+    print(home);
   }
 }

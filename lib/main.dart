@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_battler/battle_page.dart';
 import 'package:auto_battler/fork.dart';
 import 'package:auto_battler/looroll.dart';
+import 'package:auto_battler/scrap.dart';
 import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
@@ -61,19 +62,24 @@ class _HomePageState extends State<HomePage> {
 
   _pile() {
     List<Widget> listings = List.empty(growable: true);
-    for (var i = 0; i < friends.length; i++) {
+    for (var i = friends.length - 1; i >= 0; i--) {
       listings.add(Padding(
           padding: const EdgeInsets.all(5),
-          child: Container(
-            width: 80,
-            height: 80,
-            decoration: BoxDecoration(
-              border: Border.all(width: 5, color: Colors.yellow),
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
+          child: DragTarget<Scrap>(
+            builder: (context, candidateData, rejectedData) => Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.yellow),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              ),
+              child: Icon(
+                friends[i].icon,
+              ),
             ),
-            child: Icon(
-              friends[i].icon,
-            ),
+            onAccept: (data) {
+              friends[i] = data;
+            },
           )));
     }
     return listings;
@@ -108,16 +114,25 @@ class _HomePageState extends State<HomePage> {
       listings.add(
         Padding(
             padding: const EdgeInsets.all(5),
-            child: Container(
-              width: 75,
-              height: 75,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 5, color: Colors.black45),
-                  borderRadius: const BorderRadius.all(Radius.circular(8))),
-              child: Tooltip(
-                verticalOffset: -75,
-                message: shop[i].tooltipMessage,
-                child: Icon(shop[i].icon),
+            child: Draggable<Scrap>(
+              data: shop[i],
+              feedback: Icon(shop[i].icon),
+              child: Container(
+                width: 75,
+                height: 75,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 5, color: Colors.black45),
+                    borderRadius: const BorderRadius.all(Radius.circular(8))),
+                child: Tooltip(
+                  verticalOffset: -75,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+                  message: shop[i].tooltipMessage,
+                  child: Icon(shop[i].icon),
+                ),
               ),
             )),
       );
