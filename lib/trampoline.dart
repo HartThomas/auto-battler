@@ -1,6 +1,4 @@
 import 'package:auto_battler/scrap.dart';
-import 'package:auto_battler/variables/variables.dart';
-import 'package:flutter/material.dart';
 
 class Trampoline extends Scrap {
   static const tooltip =

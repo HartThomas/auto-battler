@@ -1,4 +1,3 @@
-import 'package:auto_battler/scrap.dart';
 import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';

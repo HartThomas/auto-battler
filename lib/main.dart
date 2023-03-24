@@ -132,6 +132,7 @@ class _HomePageState extends State<HomePage> {
         growable: true);
     listings.add(ElevatedButton(
       onPressed: () {
+        enemiesReset();
         _createOpponent();
         Navigator.pushNamed(context, "/battlepage");
       },
