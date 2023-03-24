@@ -1,4 +1,5 @@
 import 'package:animated_background/animated_background.dart';
+import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
 
 class LoserPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _LoserPageState extends State<LoserPage>
           const Text("You lost, better luck next time!"),
           ElevatedButton(
               onPressed: () {
+                friendsReset();
                 Navigator.pushNamed(context, "/");
               },
               child: const Text("Try again"))

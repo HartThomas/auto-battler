@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 textStyle: const TextStyle(fontSize: 20, color: Colors.white),
                 message: friends[i].tooltipMessage,
-                child: Icon(friends[i].icon),
+                child: Image(image: AssetImage(friends[i].image)),
               ),
             ),
             onAccept: (data) {
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(5),
             child: Draggable<Scrap>(
               data: shop[i],
-              feedback: Icon(shop[i].icon),
+              feedback: Image(image: AssetImage(shop[i].image)),
               child: Container(
                 width: 75,
                 height: 75,
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   textStyle: const TextStyle(fontSize: 20, color: Colors.white),
                   message: shop[i].tooltipMessage,
-                  child: Icon(shop[i].icon),
+                  child: Image(image: AssetImage(shop[i].image)),
                 ),
               ),
             )),

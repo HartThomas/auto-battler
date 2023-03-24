@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Scrap {
   String scrapName;
-  IconData icon;
+  String image;
   String? home;
   String? tooltipMessage;
 
-  Scrap(this.scrapName, this.icon, [this.home, this.tooltipMessage]);
+  Scrap(this.scrapName, this.image, [this.home, this.tooltipMessage]);
 
   getScrapName() {
     return scrapName;

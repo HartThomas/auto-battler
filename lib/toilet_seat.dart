@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class ToiletSeat extends Scrap {
   static const tooltip = "The Toilet Seat destroys the next 3 opposing scrap";
 
-  ToiletSeat([String? home]) : super("Toilet seat", Icons.tv, home, tooltip);
+  ToiletSeat([String? home])
+      : super("Toilet seat", "assets/toiletseat.png", home, tooltip);
   @override
   collide([String? home]) {
     if (home == "friend") {

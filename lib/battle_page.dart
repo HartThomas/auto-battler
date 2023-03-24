@@ -27,10 +27,10 @@ class _BattlePageState extends State<BattlePage> {
   _getFriends() {
     List<Widget> listings = List.empty(growable: true);
     for (var i = friends.length - 1; i >= 0; i--) {
-      listings.add(Icon(
-        friends[i].icon,
+      listings.add(Image(
+        image: AssetImage(friends[i].image),
         color: Colors.white,
-        size: 120,
+        height: 120,
       ));
     }
     return listings;
@@ -39,10 +39,9 @@ class _BattlePageState extends State<BattlePage> {
   _getEnemies() {
     List<Widget> listings = List.empty(growable: true);
     for (var i = 0; i < enemies.length; i++) {
-      listings.add(Icon(
-        enemies[i].icon,
-        color: Colors.white,
-        size: 120,
+      listings.add(Image(
+        image: AssetImage(enemies[i].image),
+        height: 120,
       ));
     }
     return listings;

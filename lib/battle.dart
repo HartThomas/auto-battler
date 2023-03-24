@@ -31,7 +31,6 @@ class Battle {
         friends[0].collide("enemy");
         enemiesCopy.removeAt(0);
       } else {
-        print({friends, friendsCopy, enemies, enemiesCopy});
         friends[0].collide("friend");
         enemies[0].collide("enemy");
       }
