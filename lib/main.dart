@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _createOpponent() {
-    for (var i = 0; i < enemies.length; i++) {
+    for (var i = 0; i < 5; i++) {
       final randomNumber = Random().nextInt(4);
       if (randomNumber == 0) {
         enemies[i] = Fork("enemy");

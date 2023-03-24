@@ -54,8 +54,10 @@ class _BattlePageState extends State<BattlePage>
         title: "Battle Page",
         home: AnimatedBackground(
           vsync: this,
-          behaviour: RacingLinesBehaviour(direction: LineDirection.Btt),
+          behaviour:
+              RacingLinesBehaviour(direction: LineDirection.Btt, numLines: 50),
           child: Scaffold(
+            backgroundColor: Colors.transparent,
             floatingActionButton: FloatingActionButton(
               onPressed: _collision,
               tooltip: 'Collide',
