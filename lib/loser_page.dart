@@ -1,24 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
+import 'package:flutter/material.dart';
 
-class VictoryPage extends StatefulWidget {
-  const VictoryPage({super.key});
+class LoserPage extends StatefulWidget {
+  const LoserPage({super.key});
 
   @override
-  State<VictoryPage> createState() => _VictoryPageState();
+  State<LoserPage> createState() => _LoserPageState();
 }
 
-class _VictoryPageState extends State<VictoryPage>
+class _LoserPageState extends State<LoserPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return AnimatedBackground(
       vsync: this,
-      behaviour: BubblesBehaviour(),
+      behaviour: RandomParticleBehaviour(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Victory!"),
+          const Text("You lost, better luck next time!"),
           ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, "/");

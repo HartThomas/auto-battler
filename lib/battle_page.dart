@@ -16,8 +16,10 @@ class _BattlePageState extends State<BattlePage> {
   void _collision() {
     setState(() {
       battle.collision();
-      if (friends.isEmpty || enemies.isEmpty) {
+      if (enemies.isEmpty) {
         Navigator.pushNamed(context, "/victorypage");
+      } else if (friends.isEmpty) {
+        Navigator.pushNamed(context, "/loserpage");
       }
     });
   }

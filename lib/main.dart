@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_battler/battle_page.dart';
 import 'package:auto_battler/fork.dart';
 import 'package:auto_battler/looroll.dart';
+import 'package:auto_battler/loser_page.dart';
 import 'package:auto_battler/scrap.dart';
 import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/battlepage": (context) => const BattlePage(title: "Battle Page"),
-        "/victorypage": (context) => const VictoryPage()
+        "/victorypage": (context) => const VictoryPage(),
+        "/loserpage": (context) => const LoserPage()
       },
       title: 'Auto-battler',
       theme: ThemeData(

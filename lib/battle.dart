@@ -4,8 +4,6 @@ import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
 
-import 'package:flutter/material.dart';
-
 class Battle {
   Battle();
 

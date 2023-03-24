@@ -7,16 +7,4 @@ class Trampoline extends Scrap {
       "The Trampoline bounces the opposing scrap back at the opponent";
 
   Trampoline([String? home]) : super("Trampoline", Icons.tune, home, tooltip);
-  // @override
-  // collide() {
-  //   if (home == "friend") {
-  //     enemies.removeAt(0);
-  //     enemies.removeAt(0);
-  //     enemies.removeAt(0);
-  //   } else if (home == "enemy") {
-  //     friends.removeAt(0);
-  //     friends.removeAt(0);
-  //     friends.removeAt(0);
-  //   }
-  // }
 }
