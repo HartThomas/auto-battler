@@ -1,9 +1,9 @@
 import 'package:auto_battler/fork.dart';
 import 'package:auto_battler/looroll.dart';
-import 'package:auto_battler/scrap.dart';
 import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
+
 import 'package:flutter/material.dart';
 
 class Battle {
@@ -20,20 +20,25 @@ class Battle {
     if (friends.isNotEmpty && enemies.isNotEmpty) {
       if (friends[0].scrapName == "Loo roll" ||
           enemies[0].scrapName == "Loo roll") {
-        friends.removeAt(0);
-        enemies.removeAt(0);
+        friendsCopy.removeAt(0);
+        enemiesCopy.removeAt(0);
       } else if (friends[0].scrapName == "Trampoline" &&
           enemies[0].scrapName == "Trampoline") {
-        enemies.removeAt(0);
-        friends.removeAt(0);
+        enemiesCopy.removeAt(0);
+        friendsCopy.removeAt(0);
       } else if (friends[0].scrapName == "Trampoline") {
-        enemies[0].collide("friends");
+        enemies[0].collide("friend");
+        friendsCopy.removeAt(0);
       } else if (enemies[0].scrapName == "Trampoline") {
-        friends[0].collide("enemies");
+        friends[0].collide("enemy");
+        enemiesCopy.removeAt(0);
       } else {
-        friends[0].collide();
-        enemies[0].collide();
+        print({friends, friendsCopy, enemies, enemiesCopy});
+        friends[0].collide("friend");
+        enemies[0].collide("enemy");
       }
+      friends = friendsCopy;
+      enemies = enemiesCopy;
     }
   }
 }

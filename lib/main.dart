@@ -7,6 +7,7 @@ import 'package:auto_battler/scrap.dart';
 import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
+import 'package:auto_battler/victory_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: "/",
       routes: {
-        "/battlepage": (context) => const BattlePage(title: "Battle Page")
+        "/battlepage": (context) => const BattlePage(title: "Battle Page"),
+        "/victorypage": (context) => const VictoryPage()
       },
       title: 'Auto-battler',
       theme: ThemeData(
@@ -47,13 +49,13 @@ class _HomePageState extends State<HomePage> {
       for (var i = 0; i < shop.length; i++) {
         final randomNumber = Random().nextInt(4);
         if (randomNumber == 0) {
-          shop[i] = Fork("friends");
+          shop[i] = Fork("friend");
         } else if (randomNumber == 1) {
-          shop[i] = ToiletSeat("friends");
+          shop[i] = ToiletSeat("friend");
         } else if (randomNumber == 2) {
-          shop[i] = Trampoline("friends");
+          shop[i] = Trampoline("friend");
         } else if (randomNumber == 3) {
-          shop[i] = LooRoll("friends");
+          shop[i] = LooRoll("friend");
         }
       }
     });
@@ -64,13 +66,17 @@ class _HomePageState extends State<HomePage> {
     for (var i = 0; i < enemies.length; i++) {
       final randomNumber = Random().nextInt(4);
       if (randomNumber == 0) {
-        enemies[i] = Fork("enemies");
+        enemies[i] = Fork("enemy");
+        enemiesCopy[i] = Fork("enemy");
       } else if (randomNumber == 1) {
-        enemies[i] = ToiletSeat("enemies");
+        enemies[i] = ToiletSeat("enemy");
+        enemiesCopy[i] = ToiletSeat("enemy");
       } else if (randomNumber == 2) {
-        enemies[i] = Trampoline("enemies");
+        enemies[i] = Trampoline("enemy");
+        enemiesCopy[i] = Trampoline("enemy");
       } else if (randomNumber == 3) {
-        enemies[i] = LooRoll("enemies");
+        enemies[i] = LooRoll("enemy");
+        enemiesCopy[i] = LooRoll("enemy");
       }
     }
   }
@@ -88,12 +94,20 @@ class _HomePageState extends State<HomePage> {
                 border: Border.all(width: 5, color: Colors.yellow),
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
               ),
-              child: Icon(
-                friends[i].icon,
+              child: Tooltip(
+                verticalOffset: -75,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+                textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+                message: friends[i].tooltipMessage,
+                child: Icon(friends[i].icon),
               ),
             ),
             onAccept: (data) {
               friends[i] = data;
+              friendsCopy[i] = data;
             },
           )));
     }

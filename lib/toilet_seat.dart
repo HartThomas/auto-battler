@@ -9,13 +9,21 @@ class ToiletSeat extends Scrap {
   @override
   collide([String? home]) {
     if (home == "friend") {
-      enemies.removeAt(0);
-      enemies.removeAt(0);
-      enemies.removeAt(0);
+      enemiesCopy.removeAt(0);
+      if (enemiesCopy.isNotEmpty) {
+        enemiesCopy.removeAt(0);
+      }
+      if (enemiesCopy.isNotEmpty) {
+        enemiesCopy.removeAt(0);
+      }
     } else if (home == "enemy") {
-      friends.removeAt(0);
-      friends.removeAt(0);
-      friends.removeAt(0);
+      friendsCopy.removeAt(0);
+      if (friendsCopy.isNotEmpty) {
+        friendsCopy.removeAt(0);
+      }
+      if (friendsCopy.isNotEmpty) {
+        friendsCopy.removeAt(0);
+      }
     }
   }
 }
