@@ -1,3 +1,4 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:auto_battler/battle.dart';
 import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ class BattlePage extends StatefulWidget {
   State<BattlePage> createState() => _BattlePageState();
 }
 
-class _BattlePageState extends State<BattlePage> {
+class _BattlePageState extends State<BattlePage>
+    with SingleTickerProviderStateMixin {
   var battle = Battle();
   void _collision() {
     setState(() {
@@ -29,7 +31,6 @@ class _BattlePageState extends State<BattlePage> {
     for (var i = friends.length - 1; i >= 0; i--) {
       listings.add(Image(
         image: AssetImage(friends[i].image),
-        color: Colors.white,
         height: 120,
       ));
     }
@@ -51,16 +52,10 @@ class _BattlePageState extends State<BattlePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "Battle Page",
-        home: Container(
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    'assets/versus.png',
-                  ),
-                  fit: BoxFit.cover)),
+        home: AnimatedBackground(
+          vsync: this,
+          behaviour: RacingLinesBehaviour(direction: LineDirection.Btt),
           child: Scaffold(
-            backgroundColor: Colors.transparent,
             floatingActionButton: FloatingActionButton(
               onPressed: _collision,
               tooltip: 'Collide',
