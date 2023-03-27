@@ -31,11 +31,13 @@ class Battle {
         friends[0].collide("enemy");
         enemiesCopy.removeAt(0);
       } else {
-        friends[0].collide("friend");
+        print({enemies, friends});
         enemies[0].collide("enemy");
+        print({enemies, friends});
+        friends[0].collide("friend");
       }
-      friends = friendsCopy;
-      enemies = enemiesCopy;
+      friends = [...friendsCopy];
+      enemies = [...enemiesCopy];
     }
   }
 }

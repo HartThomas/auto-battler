@@ -22,6 +22,8 @@ class _LoserPageState extends State<LoserPage>
           const Text("You lost, better luck next time!"),
           ElevatedButton(
               onPressed: () {
+                loss();
+                resetActions();
                 friendsReset();
                 Navigator.pushNamed(context, "/");
               },

@@ -14,6 +14,7 @@ var enemiesCopy = List.filled(
     growable: true);
 final shop = List.filled(8, Scrap("empty", "assets/blank.png", "shop", "empty"),
     growable: false);
+var info = [0, 0, 0];
 
 void friendsReset() {
   friends = List.filled(
@@ -31,4 +32,16 @@ void enemiesReset() {
   enemiesCopy = List.filled(
       5, Scrap("empty", "assets/blank.png", "friend", "empty"),
       growable: true);
+}
+
+void resetActions() {
+  info[2] = 0;
+}
+
+void win() {
+  info[0]++;
+}
+
+void loss() {
+  info[1]++;
 }

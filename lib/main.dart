@@ -61,7 +61,12 @@ class _HomePageState extends State<HomePage> {
         }
       }
     });
-    // write a function to refresh shop variable
+  }
+
+  void action() {
+    setState(() {
+      info[2]++;
+    });
   }
 
   _createOpponent() {
@@ -108,6 +113,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             onAccept: (data) {
+              action();
               friends[i] = data;
               friendsCopy[i] = data;
             },
@@ -117,28 +123,70 @@ class _HomePageState extends State<HomePage> {
   }
 
   _info(context) {
-    List<Widget> listings = List.filled(
-        3,
-        Padding(
-            padding: const EdgeInsets.all(5),
-            child: Container(
+    return [
+      Padding(
+          padding: const EdgeInsets.all(5),
+          child: Container(
               width: 80,
               height: 80,
               decoration: BoxDecoration(
                 border: Border.all(width: 5, color: Colors.red),
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
               ),
-            )),
-        growable: true);
-    listings.add(ElevatedButton(
-      onPressed: () {
-        enemiesReset();
-        _createOpponent();
-        Navigator.pushNamed(context, "/battlepage");
-      },
-      child: const Text('Toss'),
-    ));
-    return listings;
+              child: Center(
+                child: info[0] == 1
+                    ? Text(
+                        "${info[0].toString()} win",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      )
+                    : Text("${info[0].toString()} wins",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
+              ))),
+      Padding(
+          padding: const EdgeInsets.all(5),
+          child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.red),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              ),
+              child: Center(
+                  child: info[1] == 1
+                      ? Text("${info[1].toString()} loss",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18))
+                      : Text("${info[1].toString()} losses",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18))))),
+      Padding(
+          padding: const EdgeInsets.all(5),
+          child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.red),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              ),
+              child: Center(
+                  child: info[2] == 1
+                      ? Text("${info[2].toString()} action",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))
+                      : Text("${info[2].toString()} actions",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))))),
+      ElevatedButton(
+        onPressed: () {
+          enemiesReset();
+          _createOpponent();
+          Navigator.pushNamed(context, "/battlepage");
+        },
+        child: const Text('Toss'),
+      )
+    ];
   }
 
   _shop() {

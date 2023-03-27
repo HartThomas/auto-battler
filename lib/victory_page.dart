@@ -23,6 +23,8 @@ class _VictoryPageState extends State<VictoryPage>
           ElevatedButton(
               onPressed: () {
                 friendsReset();
+                resetActions();
+                win();
                 Navigator.pushNamed(context, "/");
               },
               child: const Text("Try again"))
