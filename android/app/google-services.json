@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "68022749444",
+    "project_id": "auto-battler-6593d",
+    "storage_bucket": "auto-battler-6593d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68022749444:android:71a5034d79e1d627f22851",
+        "android_client_info": {
+          "package_name": "com.example.auto_battler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68022749444-ej767daalu0p010t6s0uh5qr0f98h1nv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOAVunXD6BGW8V_4OjAX5lf44koLr8X7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68022749444-ej767daalu0p010t6s0uh5qr0f98h1nv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "68022749444-2rbjdq8tcuip5bugpie4kmgv92bunh1g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.autoBattler"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

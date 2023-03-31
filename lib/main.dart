@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:auto_battler/battle_page.dart';
+import 'package:auto_battler/firebase_options.dart';
 import 'package:auto_battler/fork.dart';
 import 'package:auto_battler/looroll.dart';
 import 'package:auto_battler/loser_page.dart';
@@ -9,9 +10,16 @@ import 'package:auto_battler/toilet_seat.dart';
 import 'package:auto_battler/trampoline.dart';
 import 'package:auto_battler/variables/variables.dart';
 import 'package:auto_battler/victory_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
