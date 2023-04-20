@@ -8,7 +8,7 @@ It is currently hosted here: https://auto-battler-6593d.web.app/#/
 
 # usage
 
-As yet I haven't implimented instructions in app so here you go:
+I have added a Tutorial button at the top of the page but I will also include some info here:
 
 You are at war with Australia and of course the quickest way to get to the them is through the center of the earth. You need to choose what pieces of scrap to toss down that hole and someone in Australia will do the same to you(randomly generated opponent).
 When you first load you will have to search the scrapyard for scrap, you can do this at any time, hover over the scrap for a description of what it does. Drag the scrap that you want into the yellow boxes on the left and when you are happen 'Toss' them down the hole.
