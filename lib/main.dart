@@ -233,6 +233,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
+        ElevatedButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        title: const Text("Tutorial"),
+                        content: const Text(
+                            "First search the scrapyard, then hover over the scrap you find to see what it will do when tossed. Drag the scrap you want onto you pile, remember how gravity works and put the scrap that you want to connect with the opponent first at the bottom of the pile. When you are finished arranging you scrap, 'Toss' them down the hole. Enjoy!"),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("OK"))
+                        ],
+                      ));
+            },
+            child: const Text("Tutorial")),
         Padding(
             padding: const EdgeInsets.all(16),
             child: Row(

@@ -2,7 +2,6 @@ import 'package:animated_background/animated_background.dart';
 import 'package:auto_battler/battle.dart';
 import 'package:auto_battler/variables/variables.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 class BattlePage extends StatefulWidget {
   const BattlePage({super.key, required this.title});
@@ -30,9 +29,14 @@ class _BattlePageState extends State<BattlePage>
   _getFriends() {
     List<Widget> listings = List.empty(growable: true);
     for (var i = friends.length - 1; i >= 0; i--) {
-      listings.add(Image(
-        image: AssetImage(friends[i].image),
-        height: 80,
+      listings.add(Tooltip(
+        verticalOffset: -75,
+        textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+        message: friends[i].tooltipMessage,
+        child: Image(
+          image: AssetImage(friends[i].image),
+          height: 80,
+        ),
       ));
     }
     return listings;
@@ -41,9 +45,14 @@ class _BattlePageState extends State<BattlePage>
   _getEnemies() {
     List<Widget> listings = List.empty(growable: true);
     for (var i = 0; i < enemies.length; i++) {
-      listings.add(Image(
-        image: AssetImage(enemies[i].image),
-        height: 80,
+      listings.add(Tooltip(
+        verticalOffset: -75,
+        textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+        message: enemies[i].tooltipMessage,
+        child: Image(
+          image: AssetImage(enemies[i].image),
+          height: 80,
+        ),
       ));
     }
     return listings;
